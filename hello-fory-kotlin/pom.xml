@@ -18,7 +18,7 @@
         <ksp.maven.plugin.version>0.4.1</ksp.maven.plugin.version>
         <fory.version>1.7.2</fory.version>
         <maven-compiler-plugin.version>3.16.0</maven-compiler-plugin.version>
-        <build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
+        <build-helper-maven-plugin.version>3.6.2</build-helper-maven-plugin.version>
         <exec-maven-plugin.version>3.6.4</exec-maven-plugin.version>
     </properties>
 
