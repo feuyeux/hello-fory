@@ -9,38 +9,47 @@ import java.util.*;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.fory.Fory;
-import org.apache.fory.config.Language;
 import org.apache.fory.logging.LoggerFactory;
 
 @Slf4j
 public class HelloFory {
+  /** Namespace shared by every language sample so the payloads stay interchangeable. */
+  private static final String NAMESPACE = "org.feuyeux.fory";
+
+  private static final String TYPE_NAME = "UserInfo";
+
+  private static final Path OUTPUT_DIR = Paths.get("../workspace");
+
+  private static final List<String> LANGS =
+      List.of("java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp");
+
   public static void main(String[] args) throws IOException {
     // Enable SLF4J logging for Fory (same as Fory uses internally)
     LoggerFactory.useSlf4jLogging(true);
 
     // Create output directory if it doesn't exist
-    Path outputDir = Paths.get("../workspace");
-    Files.createDirectories(outputDir);
+    Files.createDirectories(OUTPUT_DIR);
 
     // Create a sample UserInfo object
     UserInfo userInfo = createSampleUserInfo();
     log.info("Created user: {}", userInfo);
     // Create fory instance configured for cross-language compatibility
-    Fory fory = Fory.builder().withLanguage(Language.XLANG).withRefTracking(true).build();
-    fory.register(UserInfo.class);
+    Fory fory = Fory.builder().withXlang(true).withRefTracking(true).withCompatible(true).build();
+    // Register under an explicit namespace + type name instead of the Java package name,
+    // otherwise the other languages cannot resolve the type.
+    fory.register(UserInfo.class, NAMESPACE, TYPE_NAME);
 
     // Serialize the user to bytes
     byte[] serialized = fory.serialize(userInfo);
 
     // Write the serialized data to a file
-    Path outputFile = outputDir.resolve("userinfo_java.fory");
+    Path outputFile = OUTPUT_DIR.resolve("userinfo_java.fory");
     Files.write(outputFile, serialized);
     log.info("Serialized to {}", outputFile);
 
     // Try to read serialized data from other languages
-    String[] langs = {"java", "go", "js", "python", "rust"};
-    for (String lang : langs) {
-      Path langFile = outputDir.resolve("userinfo_" + lang + ".fory");
+    for (String lang : LANGS) {
+      Path langFile = OUTPUT_DIR.resolve("userinfo_" + lang + ".fory");
       if (Files.exists(langFile)) {
         try {
           UserInfo userInfoFromFile = deserializeUser(fory, langFile);
@@ -75,7 +84,7 @@ public class HelloFory {
 
   private static UserInfo deserializeUser(Fory fory, Path filePath) throws IOException {
     byte[] serialized = Files.readAllBytes(filePath);
-    return (UserInfo) fory.deserialize(serialized);
+    return fory.deserialize(serialized, UserInfo.class);
   }
 }
 

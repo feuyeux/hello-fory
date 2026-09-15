@@ -1,16 +1,21 @@
-const Fory = require('@apache-fory/fory').default;
-const { Type } = require('@apache-fory/fory');
+const Fory = require('@apache-fory/core').default;
+const { Type } = require('@apache-fory/core');
 const fs = require('fs');
 const path = require('path');
 
+// Namespace-qualified type name shared by every language sample.
+const TYPE_NAME = 'org.feuyeux.fory.UserInfo';
+
+const LANGS = ['java', 'kotlin', 'scala', 'go', 'js', 'python', 'rust', 'csharp', 'dart', 'cpp'];
+
 // Define UserInfo type using Type.struct
-const UserInfoType = Type.struct("org.feuyeux.fory.UserInfo", {
+const UserInfoType = Type.struct(TYPE_NAME, {
     userId: Type.int64(),
     name: Type.string(),
     age: Type.int32(),
-    emails: Type.array(Type.string()),
+    emails: Type.list(Type.string()),
     properties: Type.map(Type.string(), Type.string()),
-    scores: Type.array(Type.int32()),
+    scores: Type.list(Type.int32()),
     active: Type.bool(),
     createdAt: Type.int64(),
     avatar: Type.binary()
@@ -18,7 +23,8 @@ const UserInfoType = Type.struct("org.feuyeux.fory.UserInfo", {
 
 function createSampleUserInfo() {
     return {
-        userId: 12345,
+        // int64 fields are BigInt on the JavaScript side
+        userId: 12345n,
         name: "John Doe",
         age: 30,
         emails: ["john.doe@example.com", "johndoe@gmail.com"],
@@ -29,7 +35,7 @@ function createSampleUserInfo() {
         ]),
         scores: [85, 90, 78, 92],
         active: true,
-        createdAt: Math.floor(Date.now() / 1000),
+        createdAt: BigInt(Math.floor(Date.now() / 1000)),
         avatar: new Uint8Array([0, 1, 2, 3, 4, 5])
     };
 }
@@ -53,8 +59,8 @@ function main() {
         console.log("Created user:", userInfo);
 
         // Create fory instance configured for cross-language compatibility
-        const fory = new Fory({ refTracking: true });
-        const { serialize, deserialize } = fory.registerSerializer(UserInfoType);
+        const fory = new Fory({ ref: true, compatible: true });
+        const { serialize, deserialize } = fory.register(UserInfoType);
 
         // Serialize the user to bytes
         const serialized = serialize(userInfo);
@@ -65,8 +71,7 @@ function main() {
         console.log(`Serialized to ${outputFile}`);
 
         // Try to read serialized data from other languages
-        const langs = ["java", "go", "js", "python", "rust"];
-        for (const lang of langs) {
+        for (const lang of LANGS) {
             const langFile = path.join(outputDir, `userinfo_${lang}.fory`);
             if (fs.existsSync(langFile)) {
                 try {

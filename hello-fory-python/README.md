@@ -4,7 +4,7 @@ This example demonstrates using Apache fory with Python.
 
 ## Prerequisites
 
-- Python 3.8+
+- Python 3.10+ (pyfory 1.7.2 ships wheels for CPython 3.10–3.14)
 
 ## Setup Instructions
 

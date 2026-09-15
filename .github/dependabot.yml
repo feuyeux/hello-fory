@@ -10,8 +10,28 @@ updates:
     schedule:
       interval: "daily"
     rebase-strategy: "auto"
+  - package-ecosystem: "maven"
+    directory: "hello-fory-kotlin"
+    schedule:
+      interval: "daily"
+    rebase-strategy: "auto"
+  - package-ecosystem: "maven"
+    directory: "hello-fory-scala"
+    schedule:
+      interval: "daily"
+    rebase-strategy: "auto"
+  - package-ecosystem: "nuget"
+    directory: "hello-fory-csharp"
+    schedule:
+      interval: "daily"
+    rebase-strategy: "auto"
+  - package-ecosystem: "pub"
+    directory: "hello-fory-dart"
+    schedule:
+      interval: "daily"
+    rebase-strategy: "auto"
   - package-ecosystem: "npm"
-    directory: "hello-fory-javascript"
+    directory: "hello-fory-js"
     schedule:
       interval: "daily"
     rebase-strategy: "auto"
@@ -22,6 +42,11 @@ updates:
     rebase-strategy: "auto"
   - package-ecosystem: "gomod"
     directory: "hello-fory-go"
+    schedule:
+      interval: "daily"
+    rebase-strategy: "auto"
+  - package-ecosystem: "cargo"
+    directory: "hello-fory-rust"
     schedule:
       interval: "daily"
     rebase-strategy: "auto"

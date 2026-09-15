@@ -7,8 +7,28 @@ target/
 .DS_Store
 vendor/
 node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
 fory-source/
 workspace/
+
+# .NET
+hello-fory-csharp/bin/
+hello-fory-csharp/obj/
+
+# Dart
+hello-fory-dart/.dart_tool/
+hello-fory-dart/bin/*.fory.dart
+
+# C++
+hello-fory-cpp/build/
 
 package-lock.json
 go.sum

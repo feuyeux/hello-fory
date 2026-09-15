@@ -9,6 +9,12 @@ import (
 	fory "github.com/apache/fory/go/fory"
 )
 
+// typeName is the namespace-qualified type name shared by every language sample.
+const typeName = "org.feuyeux.fory.UserInfo"
+
+// langs lists the samples whose payloads we try to read back.
+var langs = []string{"java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp"}
+
 type UserInfo struct {
 	UserId     int64
 	Name       string
@@ -18,7 +24,10 @@ type UserInfo struct {
 	Scores     []int32
 	Active     bool
 	CreatedAt  int64
-	Avatar     []byte
+	// `type=bytes` forces Fory's BINARY blob schema. Without it a []byte struct
+	// field is written as a dense uint8 array, which the Java/Python/JS/Rust
+	// samples cannot read back.
+	Avatar []byte `fory:"type=bytes"`
 }
 
 func createSampleUserInfo() *UserInfo {
@@ -72,11 +81,14 @@ func main() {
 	fmt.Printf("Created user: %+v\n", userInfo)
 
 	// Create fory instance configured for cross-language compatibility
-	f := fory.NewFory(true)
-	f.SetLanguage(fory.XLANG)
-	err := f.RegisterNamedType(UserInfo{}, "org.feuyeux.fory.UserInfo")
-	if err != nil {
-		return
+	f := fory.NewFory(
+		fory.WithXlang(true),
+		fory.WithRefTracking(true),
+		fory.WithCompatible(true),
+	)
+	if err := f.RegisterStructByName(UserInfo{}, typeName); err != nil {
+		fmt.Printf("Failed to register type: %v\n", err)
+		os.Exit(1)
 	}
 
 	// Serialize the user to bytes
@@ -95,7 +107,6 @@ func main() {
 	fmt.Printf("Serialized to %s\n", outputFile)
 
 	// Try to read serialized data from other languages
-	langs := []string{"java", "go", "js", "python", "rust"}
 	for _, lang := range langs {
 		langFile := filepath.Join(outputDir, fmt.Sprintf("userinfo_%s.fory", lang))
 		if _, err := os.Stat(langFile); err == nil {

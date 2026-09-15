@@ -5,22 +5,13 @@ This example demonstrates using Apache fory with JavaScript.
 ## Prerequisites
 
 - Node.js 20+
-- npm 6+
+- npm 10+
 
 ## Setup Instructions
 
-Apache Fory™ is NOT yet available on npm, please install from source code:
+Apache Fory™ is published on npm, so a plain install is enough:
 
 ```bash
-# Clone and build Fory from source (if not already done)
-cd ..
-git clone --depth 1 https://github.com/apache/fory.git fory-source
-cd fory-source/javascript
-npm install
-npm run build
-
-# Install dependencies in the example project
-cd ../../hello-fory-js
 npm install
 ```
 
@@ -34,4 +25,11 @@ node main.js
 ## Package Information
 
 - Source: [Apache Fory JavaScript](https://github.com/apache/fory/tree/main/javascript)
-- Package: @apache-fory/fory (installed from local source)
+- Package: [@apache-fory/core](https://www.npmjs.com/package/@apache-fory/core) 1.7.2
+- Optional: `@apache-fory/hps` adds native string-detection acceleration on Node.js 20+
+
+## Notes
+
+- `Type.int64()` fields map to JavaScript `BigInt` (`12345n`), not `number`.
+- The struct is registered as `org.feuyeux.fory.UserInfo`, the same name every other
+  language sample uses, so the payloads are interchangeable.

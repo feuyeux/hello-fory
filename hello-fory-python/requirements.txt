@@ -1,3 +1,3 @@
 # https://pypi.org/project/pyfory/
-pyfory>=0.13.1
+pyfory>=1.7.2
 numpy

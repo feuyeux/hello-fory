@@ -1,0 +1,9 @@
+# Fory Dart generates serializers with build_runner; bin/ is not a default
+# code-generation root, so it has to be declared explicitly.
+targets:
+  $default:
+    sources:
+      - bin/**
+      - lib/**
+      - pubspec.yaml
+      - $package$

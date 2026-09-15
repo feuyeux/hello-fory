@@ -1,18 +1,27 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 import pyfory
 import time
 from pathlib import Path
 from typing import Dict, List, Optional
+
+from pyfory import Int32
+
+# Namespace-qualified type name shared by every language sample.
+TYPE_NAME = "org.feuyeux.fory.UserInfo"
+
+LANGS = ["java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp"]
 
 
 @dataclass
 class UserInfo:
     user_id: Optional[int] = None
     name: Optional[str] = None
-    age: Optional[int] = None
+    # Int32 keeps `age`/`scores` on the 32-bit wire type the other samples use;
+    # a plain `int` would be serialized as int64 and fail to cross-read.
+    age: Optional[Int32] = None
     emails: Optional[List[str]] = None
     properties: Optional[Dict[str, str]] = None
-    scores: Optional[List[int]] = None
+    scores: Optional[List[Int32]] = None
     active: Optional[bool] = None
     created_at: Optional[int] = None
     avatar: Optional[bytes] = None
@@ -54,8 +63,10 @@ def main():
     print(f"Created user: {user_info}")
 
     # Create fory instance configured for cross-language compatibility
-    fory = pyfory.Fory(xlang=True, ref=True)
-    fory.register(UserInfo, namespace="org.feuyeux.fory", typename="UserInfo")
+    fory = pyfory.Fory(xlang=True, ref=True, compatible=True)
+    # pyfory >=1.0 takes a single namespace-qualified name instead of
+    # separate namespace/typename arguments.
+    fory.register(UserInfo, name=TYPE_NAME)
 
     # Serialize the user to bytes
     serialized = fory.serialize(user_info)
@@ -66,8 +77,7 @@ def main():
     print(f"Serialized to {output_file}")
 
     # Try to read serialized data from other languages
-    langs = ["java", "go", "js", "python", "rust"]
-    for lang in langs:
+    for lang in LANGS:
         lang_file = output_dir / f"userinfo_{lang}.fory"
         if lang_file.exists():
             try:

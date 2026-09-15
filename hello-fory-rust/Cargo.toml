@@ -8,5 +8,5 @@ name = "hello_fory"
 path = "hello_fory.rs"
 
 [dependencies]
-fory = "0.13"
-fory-core = "0.13"
+fory = "1.7.2"
+
