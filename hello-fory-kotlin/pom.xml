@@ -14,7 +14,7 @@
         <!-- Kotlin / KSP versions kept in step with Fory 1.7.2's own kotlin build -->
         <kotlin.version>2.3.20</kotlin.version>
         <kotlin.compiler.jvmTarget>21</kotlin.compiler.jvmTarget>
-        <ksp.version>2.3.8</ksp.version>
+        <ksp.version>2.3.12</ksp.version>
         <ksp.maven.plugin.version>0.4.1</ksp.maven.plugin.version>
         <fory.version>1.7.2</fory.version>
         <maven-compiler-plugin.version>3.16.0</maven-compiler-plugin.version>
