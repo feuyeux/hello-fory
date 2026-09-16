@@ -13,7 +13,7 @@ import (
 const typeName = "org.feuyeux.fory.UserInfo"
 
 // langs lists the samples whose payloads we try to read back.
-var langs = []string{"java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp"}
+var langs = []string{"java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp", "swift"}
 
 type UserInfo struct {
 	UserId     int64

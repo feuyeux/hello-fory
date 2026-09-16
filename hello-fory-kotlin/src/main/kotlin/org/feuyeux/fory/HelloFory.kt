@@ -10,7 +10,7 @@ import org.apache.fory.kotlin.register
 private const val TYPE_NAME = "org.feuyeux.fory.UserInfo"
 
 private val LANGS =
-  listOf("java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp")
+  listOf("java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp", "swift")
 
 /**
  * `@ForyStruct` makes fory-kotlin-ksp generate the static xlang serializer at build time; the

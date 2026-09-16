@@ -6,7 +6,7 @@ const path = require('path');
 // Namespace-qualified type name shared by every language sample.
 const TYPE_NAME = 'org.feuyeux.fory.UserInfo';
 
-const LANGS = ['java', 'kotlin', 'scala', 'go', 'js', 'python', 'rust', 'csharp', 'dart', 'cpp'];
+const LANGS = ['java', 'kotlin', 'scala', 'go', 'js', 'python', 'rust', 'csharp', 'dart', 'cpp', 'swift'];
 
 // Define UserInfo type using Type.struct
 const UserInfoType = Type.struct(TYPE_NAME, {

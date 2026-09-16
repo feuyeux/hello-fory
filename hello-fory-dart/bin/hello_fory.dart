@@ -19,6 +19,7 @@ const List<String> langs = <String>[
   'csharp',
   'dart',
   'cpp',
+  'swift',
 ];
 
 @ForyStruct()

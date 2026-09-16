@@ -7,8 +7,8 @@ use std::time::{SystemTime, UNIX_EPOCH};
 /// Namespace + type name shared by every language sample.
 const TYPE_NAME: &str = "org.feuyeux.fory.UserInfo";
 
-const LANGS: [&str; 10] = [
-    "java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp",
+const LANGS: [&str; 11] = [
+    "java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp", "swift",
 ];
 
 #[derive(ForyStruct, Debug, Clone)]

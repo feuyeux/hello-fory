@@ -21,7 +21,9 @@ public class HelloFory {
   private static final Path OUTPUT_DIR = Paths.get("../workspace");
 
   private static final List<String> LANGS =
-      List.of("java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp");
+      List.of(
+          "java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp",
+          "swift");
 
   public static void main(String[] args) throws IOException {
     // Enable SLF4J logging for Fory (same as Fory uses internally)

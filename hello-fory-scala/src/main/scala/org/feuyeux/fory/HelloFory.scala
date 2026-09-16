@@ -12,7 +12,7 @@ object HelloFory:
   private val TypeName = "UserInfo"
 
   private val Langs =
-    List("java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp")
+    List("java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp", "swift")
 
   /** Uses java.util collections so the xlang wire types match the other samples. */
   class UserInfo:

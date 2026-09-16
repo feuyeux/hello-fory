@@ -30,6 +30,9 @@ hello-fory-dart/bin/*.fory.dart
 # C++
 hello-fory-cpp/build/
 
+# Swift
+hello-fory-swift/.build/
+
 package-lock.json
 go.sum
 hello-fory-go/hello-fory-go

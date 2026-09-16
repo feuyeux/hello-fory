@@ -14,8 +14,8 @@ namespace {
 /// Namespace-qualified type name shared by every language sample.
 constexpr const char *kTypeName = "org.feuyeux.fory.UserInfo";
 
-const std::vector<std::string> kLangs = {"java", "kotlin", "scala",  "go",   "js",
-                                        "python", "rust", "csharp", "dart", "cpp"};
+const std::vector<std::string> kLangs = {"java",  "kotlin", "scala", "go", "js", "python",
+                                        "rust",  "csharp", "dart",  "cpp", "swift"};
 
 }  // namespace
 

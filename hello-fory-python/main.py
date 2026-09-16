@@ -9,7 +9,7 @@ from pyfory import Int32
 # Namespace-qualified type name shared by every language sample.
 TYPE_NAME = "org.feuyeux.fory.UserInfo"
 
-LANGS = ["java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp"]
+LANGS = ["java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp", "swift"]
 
 
 @dataclass

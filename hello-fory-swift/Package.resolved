@@ -1,0 +1,24 @@
+{
+  "originHash" : "46a3ab30aa3a30f75f76055665f097712408a3a01be4267e624b55433940e30c",
+  "pins" : [
+    {
+      "identity" : "fory",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apache/fory.git",
+      "state" : {
+        "revision" : "35d3340b13a0aa0d5d7bab8dafc5db12870bd14b",
+        "version" : "1.7.2"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax.git",
+      "state" : {
+        "revision" : "0687f71944021d616d34d922343dcef086855920",
+        "version" : "600.0.1"
+      }
+    }
+  ],
+  "version" : 3
+}

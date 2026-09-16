@@ -43,7 +43,7 @@ public static class Program
 
     private static readonly string[] Langs =
     [
-        "java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp"
+        "java", "kotlin", "scala", "go", "js", "python", "rust", "csharp", "dart", "cpp", "swift"
     ];
 
     public static int Main()
