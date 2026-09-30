@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <!-- Includes the Fory runtime plus the source generator for [ForyStruct] types -->
-    <PackageReference Include="Apache.Fory" Version="1.7.2" />
+    <PackageReference Include="Apache.Fory" Version="1.7.6" />
   </ItemGroup>
 
 </Project>
