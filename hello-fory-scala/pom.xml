@@ -13,7 +13,7 @@
 
         <!-- fory-scala_3 1.7.2 is published against Scala 3.3.8 -->
         <scala.version>3.3.8</scala.version>
-        <fory.version>1.7.2</fory.version>
+        <fory.version>1.7.7</fory.version>
         <scala-maven-plugin.version>4.9.10</scala-maven-plugin.version>
         <maven-compiler-plugin.version>3.16.0</maven-compiler-plugin.version>
         <exec-maven-plugin.version>3.6.4</exec-maven-plugin.version>
