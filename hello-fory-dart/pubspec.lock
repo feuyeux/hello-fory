@@ -141,10 +141,10 @@ packages:
     dependency: "direct main"
     description:
       name: fory
-      sha256: "70a26757289f8427e671bccb812623c236ace2b83b76bd3440abb0f4e0c32f2d"
+      sha256: d181bc9399645f4611d174bd9f5cb4af17ea93cfbfe9adda9d518edaa1336858
       url: "https://pub.dev"
     source: hosted
-    version: "1.7.2"
+    version: "1.7.7"
   glob:
     dependency: transitive
     description:
